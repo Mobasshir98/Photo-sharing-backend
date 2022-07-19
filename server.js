@@ -1,3 +1,4 @@
+require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const postinfo= require('./model')
@@ -19,8 +20,14 @@ app.listen(process.env.PORT||3001,(err)=>{
 app.get("/", (req,res)=>{
     res.send("instaclone backend")
 })
-app.get("/posts",  (req,res)=>{
-    postinfo.find({}).then((data)=>res.send(data)).catch((err)=>res.send(err))
+app.get("/posts", async (req,res)=>{
+    try{
+        const data = await postinfo.find({})
+        res.status(200).send(data)
+    }
+    catch{
+        res.status(400).send("an error occured while getting posts")
+    }
 } ) 
 app.post("/post",async (req,res)=>{
     try{

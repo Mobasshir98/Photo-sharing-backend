@@ -15,6 +15,19 @@ app.listen(process.env.PORT||3001,(err)=>{
         console.log("server is running")
     }
 })
+
+app.get("/", (req,res)=>{
+    res.send("instaclone backend")
+})
+app.get("/posts", async (req,res)=>{
+    try{
+        const data = await postinfo.find({})
+        res.status(200).send(data)
+    }
+    catch{
+        res.status(400).send("an error occured while getting posts")
+    }
+} ) 
 app.post("/post",async (req,res)=>{
     try{
 
@@ -31,12 +44,3 @@ app.post("/post",async (req,res)=>{
         res.status(400).send("an error occured while posting")
     }
 })
-app.get("/", async (req,res)=>{
-    try{
-        const data = await postinfo.find({})
-        res.status(200).send(data)
-    }
-    catch{
-        res.status(400).send("an error occured while getting posts")
-    }
-} ) 

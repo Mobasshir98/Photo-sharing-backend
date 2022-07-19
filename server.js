@@ -31,9 +31,7 @@ app.post("/post",async (req,res)=>{
         res.status(400).send("an error occured while posting")
     }
 })
-app.get("/",(req,res)=>{
-    res.render("instaclone backend")
-})
+
 app.get("/users", async (req,res)=>{
     try{
         const data = await postinfo.find({})

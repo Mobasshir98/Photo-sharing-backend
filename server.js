@@ -32,7 +32,7 @@ app.post("/post",async (req,res)=>{
     }
 })
 app.get("/",(req,res)=>{
-    res.send("instaclone backend")
+    res.render("instaclone backend")
 })
 app.get("/users", async (req,res)=>{
     try{

@@ -19,14 +19,8 @@ app.listen(process.env.PORT||3001,(err)=>{
 app.get("/", (req,res)=>{
     res.send("instaclone backend")
 })
-app.get("/posts", async (req,res)=>{
-    try{
-        const data = await postinfo.find({})
-        res.status(200).send(data)
-    }
-    catch{
-        res.status(400).send("an error occured while getting posts")
-    }
+app.get("/posts",  (req,res)=>{
+    postinfo.find({}).then((data)=>res.send(data)).catch((err)=>res.send(err))
 } ) 
 app.post("/post",async (req,res)=>{
     try{

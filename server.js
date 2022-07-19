@@ -2,10 +2,12 @@ require('dotenv').config()
 const express = require('express');
 const mongoose = require('mongoose');
 const postinfo= require('./model')
+const multer=require('multer')
 const app=express();
 const cors= require("cors")
 mongoose.connect("mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/instaclone?retryWrites=true&w=majority")
 app.use(express.json())
+app.use(multer)
 app.use(cors())
 app.use(express.urlencoded({extended:false}))
 app.listen(process.env.PORT||3001,(err)=>{

@@ -16,16 +16,30 @@ app.listen(process.env.PORT||3001,(err)=>{
     }
 })
 app.post("/post",async (req,res)=>{
-    const {image,author,location,description}=req.body
-    const register =  new postinfo({
-        image,author,location,description,Date:new Date().toJSON().slice(0, 10),likes:Math.floor(Math.random()*200)
-    })
-    const registered= await register.save();
-    if(registered){
-        res.status(200).send("Post Uploaded Successfully")
+    try{
+
+        const {image,author,location,description}=req.body
+        const register =  new postinfo({
+            image,author,location,description,Date:new Date().toJSON().slice(0, 10),likes:Math.floor(Math.random()*200)
+        })
+        const registered= await register.save();
+        if(registered){
+            res.status(200).send("Post Uploaded Successfully")
+        }
+    }
+    catch{
+        res.status(400).send("an error occured while posting")
     }
 })
-app.get("/", async (req,res)=>{
-    const data = await postinfo.find({})
-    res.status(200).send(data)
+app.get("/",(req,res)=>{
+    res.send("instaclone backend")
+})
+app.get("/users", async (req,res)=>{
+    try{
+        const data = await postinfo.find({})
+        res.status(200).send(data)
+    }
+    catch{
+        res.status(400).send("an error occured while getting posts")
+    }
 } ) 

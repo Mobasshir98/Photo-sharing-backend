@@ -32,9 +32,9 @@ app.get("/posts", async (req,res)=>{
 app.post("/post",async (req,res)=>{
     try{
 
-        const {author,location,description}=req.body
+        const {image,author,location,description}=req.body
         const register =  new postinfo({
-            author,location,description,Date:new Date().toJSON().slice(0, 10),likes:Math.floor(Math.random()*200)
+            image,author,location,description,Date:new Date().toJSON().slice(0, 10),likes:Math.floor(Math.random()*200)
         })
         const registered= await register.save();
         if(registered){

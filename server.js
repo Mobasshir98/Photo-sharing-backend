@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const postinfo= require('./model')
 const app=express();
 const cors= require("cors")
-mongoose.connect("mongodb://localhost/instaclone")
+mongoose.connect("mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/instaclone?retryWrites=true&w=majority")
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({extended:false}))
-app.listen(5000,(err)=>{
+app.listen(process.env.PORT||3001,(err)=>{
     if(err){
         console.log(err)
     }

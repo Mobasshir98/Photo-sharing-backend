@@ -7,13 +7,8 @@ mongoose.connect("mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/i
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({extended:false}))
-app.listen(process.env.PORT||5000,(err)=>{
-    if(err){
-        console.log(err)
-    }
-    else{
+app.listen(process.env.PORT||5000,()=>{
         console.log("server is running")
-    }
 })
 app.get("/", (req,res)=>{
     res.send("InstaClone Backend")

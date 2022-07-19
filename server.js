@@ -24,15 +24,14 @@ app.post("/post",async (req,res)=>{
         })
         const registered= await register.save();
         if(registered){
-            res.status(200).send("Post Uploaded Successfully")
+            res.status(200).send(registered)
         }
     }
     catch{
         res.status(400).send("an error occured while posting")
     }
 })
-
-app.get("/users", async (req,res)=>{
+app.get("/", async (req,res)=>{
     try{
         const data = await postinfo.find({})
         res.status(200).send(data)

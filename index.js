@@ -3,11 +3,11 @@ const mongoose = require('mongoose');
 const postinfo= require('./model')
 const app=express();
 const cors= require("cors")
-mongoose.connect("mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/instaclone?retryWrites=true&w=majority")
+mongoose.connect(process.env.DATABASE_URL)
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({extended:false}))
-app.listen(process.env.PORT||5000,()=>{
+app.listen(process.env.PORT||8080,()=>{
         console.log("server is running")
 })
 app.get("/", (req,res)=>{
@@ -21,7 +21,7 @@ app.post("/post",async (req,res)=>{
         })
         const registered= await register.save();
         if(registered){
-            res.status(200).send(registered)
+            res.status(200).send("Uploaded Successfully")
         }
     }
     catch{

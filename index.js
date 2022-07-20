@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const postinfo= require('./model')
 const app=express();
 const cors= require("cors")
-mongoose.connect(process.env.DATABASE_URL)
+mongoose.connect(process.env.DATABASE_URL||"mongodb+srv://mobasshir:atlas1234@cluster0.tw3by.mongodb.net/instaclone?retryWrites=true&w=majority" )
 app.use(express.json())
 app.use(cors())
 app.use(express.urlencoded({extended:false}))

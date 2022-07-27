@@ -46,10 +46,11 @@ app.post("/post", async (req, res) => {
         const { image, author, location, description } = req.body;
         let imagename = new Date().toISOString().split('.').join('').split(':').join('');
         const filepath = path.join(__dirname, '/uploads', imagename)
+        console.log(filepath)
         ImagedataURI.outputFile(image, filepath).then(async (data) => {
-            console.log(data)
-            imagename = data.split('\\uploads\\')[1];
-            // console.log(imagename)
+            // console.log(data)
+            imagename = data.split('/uploads/')[1];
+            console.log(imagename)  
             const postregister = new postimage({
                 imagename: imagename, imagedata: image
             })

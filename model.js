@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const postschema = new mongoose.Schema({
-    image:{type:String},
+    imagename:{type:String},
     author:{type:String,required:true},
     location:{type:String,required:true},
     description:{type:String,required:true},

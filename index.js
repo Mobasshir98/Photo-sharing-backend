@@ -19,7 +19,7 @@ mongoose.connect(process.env.DATABASE_URL || "mongodb+srv://mobasshir:atlas1234@
                     ImagedataURI.outputFile(ele.imagedata, filepath).then((data) => {
                         console.log(data)
                     })
-                }
+                } 
             })
         }
     }).then(()=>{
